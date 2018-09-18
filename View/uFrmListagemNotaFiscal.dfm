@@ -104,8 +104,13 @@ inherited FrmListagemNotaFiscal: TFrmListagemNotaFiscal
         DataBinding.FieldName = 'RecId'
         Visible = False
       end
+      object grdListagemDBTableView3NotaFiscalServicoId: TcxGridDBColumn
+        DataBinding.FieldName = 'NotaFiscalServicoId'
+        Visible = False
+      end
       object grdListagemDBTableView3NotaFiscalId: TcxGridDBColumn
         DataBinding.FieldName = 'NotaFiscalId'
+        Visible = False
       end
       object grdListagemDBTableView3ServicoId: TcxGridDBColumn
         DataBinding.FieldName = 'ServicoId'
@@ -131,10 +136,12 @@ inherited FrmListagemNotaFiscal: TFrmListagemNotaFiscal
       object grdListagemLevel2: TcxGridLevel
         Caption = 'Produto'
         GridView = grdListagemDBTableView2
-      end
-      object grdListagemLevel3: TcxGridLevel
-        Caption = 'Servi'#231'o'
-        GridView = grdListagemDBTableView3
+        Options.DetailTabsPosition = dtpTop
+        object grdListagemLevel3: TcxGridLevel
+          Caption = 'Servi'#231'o'
+          GridView = grdListagemDBTableView3
+          Options.DetailTabsPosition = dtpTop
+        end
       end
     end
   end
@@ -215,11 +222,17 @@ inherited FrmListagemNotaFiscal: TFrmListagemNotaFiscal
     Top = 144
   end
   object mdProdutos: TdxMemData
-    Indexes = <>
+    Indexes = <
+      item
+        FieldName = 'NotaFiscalProdutoId'
+        SortOptions = []
+      end>
     SortOptions = []
-    SortedField = 'NotaFiscalId'
     Left = 416
     Top = 192
+    object mdProdutosNotaFiscalProdutoId: TIntegerField
+      FieldName = 'NotaFiscalProdutoId'
+    end
     object mdProdutosNotaFiscalId: TIntegerField
       FieldName = 'NotaFiscalId'
     end
@@ -244,11 +257,17 @@ inherited FrmListagemNotaFiscal: TFrmListagemNotaFiscal
     end
   end
   object mdServicos: TdxMemData
-    Indexes = <>
+    Indexes = <
+      item
+        FieldName = 'NotaFiscalId'
+        SortOptions = []
+      end>
     SortOptions = []
-    SortedField = 'NotaFiscalId'
     Left = 416
     Top = 240
+    object mdServicosNotaFiscalServicoId: TIntegerField
+      FieldName = 'NotaFiscalServicoId'
+    end
     object mdServicosNotaFiscalId: TIntegerField
       FieldName = 'NotaFiscalId'
     end

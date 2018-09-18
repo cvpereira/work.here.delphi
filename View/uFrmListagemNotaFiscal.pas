@@ -41,9 +41,7 @@ type
     dsProdutos: TDataSource;
     dsServicos: TDataSource;
     grdListagemLevel2: TcxGridLevel;
-    grdListagemLevel3: TcxGridLevel;
     grdListagemDBTableView2: TcxGridDBTableView;
-    grdListagemDBTableView3: TcxGridDBTableView;
     mdProdutosNome: TStringField;
     mdProdutosValorUnitario: TFloatField;
     mdProdutosQuantidade: TFloatField;
@@ -63,7 +61,12 @@ type
     grdListagemDBTableView2ValorUnitario: TcxGridDBColumn;
     grdListagemDBTableView2Quantidade: TcxGridDBColumn;
     grdListagemDBTableView2ValorTotal: TcxGridDBColumn;
+    mdProdutosNotaFiscalProdutoId: TIntegerField;
+    mdServicosNotaFiscalServicoId: TIntegerField;
+    grdListagemLevel3: TcxGridLevel;
+    grdListagemDBTableView3: TcxGridDBTableView;
     grdListagemDBTableView3RecId: TcxGridDBColumn;
+    grdListagemDBTableView3NotaFiscalServicoId: TcxGridDBColumn;
     grdListagemDBTableView3NotaFiscalId: TcxGridDBColumn;
     grdListagemDBTableView3ServicoId: TcxGridDBColumn;
     grdListagemDBTableView3Nome: TcxGridDBColumn;
@@ -73,6 +76,7 @@ type
     procedure actIncluirExecute(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure actAlterarExecute(Sender: TObject);
   private
     { Private declarations }
   public
@@ -92,6 +96,12 @@ uses
 {$R *.dfm}
 
 { TFrmListagemNotaFiscal }
+
+procedure TFrmListagemNotaFiscal.actAlterarExecute(Sender: TObject);
+begin
+//  inherited;
+  TFrmManutencaoBase.Editar(dsNotasFiscais.DataSet, Controller, FormClassManutencao);
+end;
 
 procedure TFrmListagemNotaFiscal.actIncluirExecute(Sender: TObject);
 begin
@@ -123,6 +133,7 @@ begin
     begin
       mdProdutos.Append;
       mdProdutosNotaFiscalId.AsInteger := ANotaFiscal.NotaFiscalId;
+      mdProdutosNotaFiscalProdutoId.AsInteger := ANotaFiscal.Produtos.Items[i].NotaFiscalProdutoId;
       mdProdutosProdutoId.AsInteger    := ANotaFiscal.Produtos.Items[i].Produto.ProdutoId;
       mdProdutosNome.AsString          := ANotaFiscal.Produtos.Items[i].Produto.Nome;
       mdProdutosValorUnitario.AsFloat  := ANotaFiscal.Produtos.Items[i].ValorUnitario;
@@ -135,6 +146,7 @@ begin
     begin
       mdServicos.Append;
       mdServicosNotaFiscalId.AsInteger := ANotaFiscal.NotaFiscalId;
+      mdServicosNotaFiscalServicoId.AsInteger := ANotaFiscal.Servicos.Items[i].NotaFiscalServicoId;
       mdServicosServicoId.AsInteger    := ANotaFiscal.Servicos.Items[i].Servico.ServicoId;
       mdServicosNome.AsString          := ANotaFiscal.Servicos.Items[i].Servico.Nome;
       mdServicosValorUnitario.AsFloat  := ANotaFiscal.Servicos.Items[i].ValorUnitario;
