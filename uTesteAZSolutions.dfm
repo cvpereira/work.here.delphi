@@ -112,8 +112,8 @@ object FrmTesteAZSolutions: TFrmTesteAZSolutions
           Visible = True
           ItemName = 'dxBarLargeButton1'
         end>
-      OneOnRow = True
-      Row = 1
+      OneOnRow = False
+      Row = 0
       UseOwnFont = False
       Visible = True
       WholeRow = False
@@ -132,7 +132,7 @@ object FrmTesteAZSolutions: TFrmTesteAZSolutions
           Visible = True
           ItemName = 'dxBarLargeButton2'
         end>
-      OneOnRow = True
+      OneOnRow = False
       Row = 0
       UseOwnFont = False
       Visible = True

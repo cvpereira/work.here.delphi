@@ -123,6 +123,7 @@ begin
     begin
       mdProdutos.Append;
       mdProdutosNotaFiscalId.AsInteger := ANotaFiscal.NotaFiscalId;
+      mdProdutosProdutoId.AsInteger    := ANotaFiscal.Produtos.Items[i].Produto.ProdutoId;
       mdProdutosNome.AsString          := ANotaFiscal.Produtos.Items[i].Produto.Nome;
       mdProdutosValorUnitario.AsFloat  := ANotaFiscal.Produtos.Items[i].ValorUnitario;
       mdProdutosQuantidade.AsInteger   := ANotaFiscal.Produtos.Items[i].Quantidade;
@@ -134,6 +135,7 @@ begin
     begin
       mdServicos.Append;
       mdServicosNotaFiscalId.AsInteger := ANotaFiscal.NotaFiscalId;
+      mdServicosServicoId.AsInteger    := ANotaFiscal.Servicos.Items[i].Servico.ServicoId;
       mdServicosNome.AsString          := ANotaFiscal.Servicos.Items[i].Servico.Nome;
       mdServicosValorUnitario.AsFloat  := ANotaFiscal.Servicos.Items[i].ValorUnitario;
       mdServicosQuantidade.AsInteger   := ANotaFiscal.Servicos.Items[i].Quantidade;

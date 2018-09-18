@@ -40,7 +40,10 @@ procedure TDMConexao.DataModuleCreate(Sender: TObject);
 var
   DBPath: string;
 begin
-  DBPath := 'C:\work.here.delphi\Data\dbazsolutions.fdb';
+  if not DirectoryExists(GetCurrentDir + '\Data') then
+    CreateDir(GetCurrentDir + '\Data');
+
+  DBPath := 'Data\dbazsolutions.fdb';
   dxEMFFireDACDataProvider.Options.AutoCreate := TdxAutoCreateOption.DatabaseAndSchema;
   FDConn.Params.Add('Database=' + DBPath);
   FDConn.Params.Add('DriverID=FB');
